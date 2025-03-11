@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import CoursesPage from './pages/CoursesPage'
 import CoursePage from './pages/CoursePage'
 import CourseInterview from './pages/CoursesInterview'
+import JobListingPage from './pages/JobListingPage'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
               <Route path='/' element={<HomePage />} />
               <Route path='/courses' element={<CoursesPage />} />
               <Route path='/course-1' element={<CoursePage />} />
+              <Route path='/job-listing' element={<JobListingPage />} />
               <Route path='/course-1-interview' element={<CourseInterview />} />
               {/* <Route path='/geotags' element={<TaggingPage />} />
               <Route path='/solutions' element={<SolutionsPage />} />

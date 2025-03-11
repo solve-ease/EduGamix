@@ -37,6 +37,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-indigo-600 text-white px-8 py-3 rounded-lg font-medium shadow-lg hover:bg-indigo-700 transition-colors flex items-center justify-center"
+                onClick={() => window.location.href = `/courses`}
               >
                 Get Started Free
                 <ArrowRight className="ml-2 w-5 h-5" />
