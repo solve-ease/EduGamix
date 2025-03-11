@@ -11,6 +11,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import ProfileCreationModal from './components/ProfileCreation'
 const { VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID, VITE_AUTH0_AUDIENCE } =
   import.meta.env
+import JobListingPage from './pages/JobListingPage'
 
 function App() {
   const {
@@ -44,7 +45,6 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<HomePage />} />
-
           <Route
             path='/dashboard'
             element={
@@ -56,6 +56,7 @@ function App() {
           />
           <Route path='/courses' element={<CoursesPage />} />
           <Route path='/course-1' element={<CoursesPage />} />
+              <Route path='/job-listing' element={<JobListingPage />} />
           <Route path='/course-1-interview' element={<CourseInterview />} />
         </Routes>
       </main>
