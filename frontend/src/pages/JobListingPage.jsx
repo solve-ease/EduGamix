@@ -5,6 +5,9 @@ import { Star, Bookmark, MapPin, Clock, DollarSign } from 'lucide-react';
 // Mock data service - replace with your actual API calls
 import { fetchJobs } from '../services/jobService';
 
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+
 const JobListingPage = () => {
   const [jobs, setJobs] = useState([]);
   const [filters, setFilters] = useState({
@@ -50,6 +53,8 @@ const JobListingPage = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
       <div className="bg-white shadow overflow-hidden sm:rounded-md">
         <div className="px-4 py-5 border-b border-gray-200 sm:px-6">
@@ -145,6 +150,8 @@ const JobListingPage = () => {
         )}
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 
