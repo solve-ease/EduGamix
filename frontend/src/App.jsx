@@ -2,8 +2,9 @@ import { useState } from 'react'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import './App.css'
 import HomePage from './pages/HomePage'
-
-
+import CoursesPage from './pages/CoursesPage'
+import CoursePage from './pages/CoursePage'
+import CourseInterview from './pages/CourseInterview'
 
 function App() {
 
@@ -15,6 +16,9 @@ function App() {
           <main className='flex-grow'>
             <Routes>
               <Route path='/' element={<HomePage />} />
+              <Route path='/courses' element={<CoursesPage />} />
+              <Route path='/course-1' element={<CoursePage />} />
+              <Route path='/course-1-interview' element={<CourseInterview />} />
               {/* <Route path='/geotags' element={<TaggingPage />} />
               <Route path='/solutions' element={<SolutionsPage />} />
               <Route path='/about' element={<AboutUsPage />} />

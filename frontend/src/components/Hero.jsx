@@ -78,7 +78,7 @@ const Hero = () => {
                   <div className="flex items-center justify-between mb-4">
                     <div>
                       <h3 className="font-bold text-gray-800">Welcome, Anmol Beta!</h3>
-                      <p className="text-sm text-gray-500">Level 0 Data Scientist</p>
+                      <p className="text-sm text-gray-500">Level 7 Data Scientist</p>
                     </div>
                     <div className="flex items-center bg-indigo-100 px-3 py-1 rounded-full">
                       <span className="w-4 h-4 bg-indigo-500 rounded-full mr-2"></span>
