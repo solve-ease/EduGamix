@@ -12,6 +12,7 @@ import ProfileCreationModal from './components/ProfileCreation'
 const { VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID, VITE_AUTH0_AUDIENCE } =
   import.meta.env
 import JobListingPage from './pages/JobListingPage'
+import JobDescription from './pages/jobDescriptionStatic'
 
 function App() {
   const {
@@ -56,8 +57,10 @@ function App() {
           />
           <Route path='/courses' element={<CoursesPage />} />
           <Route path='/course-1' element={<CoursesPage />} />
-              <Route path='/job-listing' element={<JobListingPage />} />
+          <Route path='/job-listing' element={<JobListingPage />} />
+          <Route path='/job-description' element={<JobDescription />} />
           <Route path='/course-1-interview' element={<CourseInterview />} />
+
         </Routes>
       </main>
     </div>

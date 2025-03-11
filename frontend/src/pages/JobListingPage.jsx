@@ -101,7 +101,8 @@ const JobListingPage = () => {
               return (
                 <li key={job.id}>
                   <Link 
-                    to={`/jobs/${job.id}`} 
+                    // to={`/jobs/${job.id}`}  // with backend functioning
+                    to={`/job-description`} 
                     className="block hover:bg-gray-50 transition duration-150"
                   >
                     <div className="px-4 py-4 sm:px-6">
