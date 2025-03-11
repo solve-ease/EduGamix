@@ -4,7 +4,7 @@ import './App.css'
 import HomePage from './pages/HomePage'
 import CoursesPage from './pages/CoursesPage'
 import CoursePage from './pages/CoursePage'
-import CourseInterview from './pages/CourseInterview'
+import CourseInterview from './pages/CoursesInterview'
 import Navbar from './components/Navbar'
 import ProtectedRoute from './components/ProtectedRoute'
 import { useAuth0 } from '@auth0/auth0-react'
@@ -55,7 +55,7 @@ function App() {
             }
           />
           <Route path='/courses' element={<CoursesPage />} />
-          <Route path='/course-1' element={<CoursePage />} />
+          <Route path='/course-1' element={<CoursesPage />} />
           <Route path='/course-1-interview' element={<CourseInterview />} />
         </Routes>
       </main>
