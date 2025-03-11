@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-three/drei": "^10.0.4",
     "@react-three/fiber": "^9.1.0",
+    "@auth0/auth0-react": "^2.3.0",
     "@tailwindcss/postcss": "^4.0.12",
     "axios": "^1.8.2",
     "framer-motion": "^12.4.13",
