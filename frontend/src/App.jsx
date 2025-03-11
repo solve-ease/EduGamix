@@ -4,7 +4,7 @@ import './App.css'
 import HomePage from './pages/HomePage'
 import CoursesPage from './pages/CoursesPage'
 import CoursePage from './pages/CoursePage'
-import CourseInterview from './pages/CourseInterview'
+import CourseInterview from './pages/CoursesInterview'
 
 function App() {
 

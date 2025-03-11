@@ -11,11 +11,11 @@ import { useAuth } from '../contexts/AuthContext';
 import { usePoints } from '../contexts/PointsContext';
 import AvatarModel from '../components/AvatarModel';
 import ProgressBar from '../components/ProgressBar';
-import { Button } from '../components/ui/button';
-import { Card } from '../components/ui/card';
-import { Badge } from '../components/ui/badge';
-import { Textarea } from '../components/ui/textarea';
-import { toast } from '../components/ui/toast';
+import { Button } from '../components/ui/Button';
+import { Card } from '../components/ui/Card';
+import { Badge } from '../components/ui/Badge';
+import Textarea from '../components/ui/Textarea';
+import { toast } from '../components/ui/Toast';
 
 const INTERVIEW_STATES = {
   INTRO: 'intro',
