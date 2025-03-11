@@ -2,6 +2,10 @@ import React from 'react';
 import { Star, Bookmark, MapPin, Clock, DollarSign } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+
 const JobDescription = ({ job }) => {
   if (!job) {
     // Dummy data in case no job prop is passed
@@ -13,11 +17,13 @@ const JobDescription = ({ job }) => {
       xpPoints: 250,
       duration: "2 weeks",
       location: "Remote",
-      description: "Develop AI models for smart farming analytics.",
+      description: "Develop AI models for smart farming analytics. I am looking for an experienced AI Prompt Developer and Python Code Writer to review and refine SEO and HTML-related prompts I have written. The ideal candidate must be fluent in English, have a strong grasp of AI principles, and be able to write clean, efficient code.",
     };
   }
 
   return (
+    <>
+    <Navbar />
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
       <div className="flex justify-between items-center border-b pb-4 mb-4">
         <h1 className="text-2xl font-bold text-gray-900">{job.title}</h1>
@@ -46,6 +52,9 @@ const JobDescription = ({ job }) => {
         Apply Now
       </Link>
     </div>
+
+    <Footer />
+    </>
   );
 };
 

@@ -56,7 +56,7 @@ function App() {
             }
           />
           <Route path='/courses' element={<CoursesPage />} />
-          <Route path='/course-1' element={<CoursesPage />} />
+          <Route path='/course-1' element={<CoursePage />} />
           <Route path='/job-listing' element={<JobListingPage />} />
           <Route path='/job-description' element={<JobDescription />} />
           <Route path='/course-1-interview' element={<CourseInterview />} />
