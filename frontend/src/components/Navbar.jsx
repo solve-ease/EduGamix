@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, BookOpen } from 'lucide-react'
+import {
+  Menu,
+  X,
+  BookOpen,
+  Award,
+  BookOpen as BookIcon,
+  Medal
+} from 'lucide-react'
 import { useAuth0 } from '@auth0/auth0-react'
 
-const Navbar = () => {
+const Navbar = ({ points = 2450 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0()
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -20,9 +28,26 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Different navigation links based on authentication status
+  const publicNavLinks = [
+    { href: '#features', label: 'Features', delay: 0.1 },
+    { href: '#how-it-works', label: 'How It Works', delay: 0.2 },
+    { href: '#testimonials', label: 'Testimonials', delay: 0.3 },
+    { href: '#pricing', label: 'Pricing', delay: 0.4 }
+  ]
+
+  const authenticatedNavLinks = [
+    { href: '/profile', label: 'Dashboard', delay: 0.1 },
+    { href: '/courses', label: 'My Courses', delay: 0.2 },
+    { href: '/leader', label: 'Leaderboard', delay: 0.3 },
+    { href: '/challenges', label: 'Challenges', delay: 0.4 }
+  ]
+
+  const navLinks = isAuthenticated ? authenticatedNavLinks : publicNavLinks
+
   return (
     <nav
-      className={`fixed z-50 transition-all duration-300 ${
+      className={`fixed w-[80vw] mt-5 z-50 transition-all duration-300 ${
         scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
@@ -46,30 +71,70 @@ const Navbar = () => {
 
           {/* Desktop menu */}
           <div className='hidden md:flex items-center space-x-8'>
-            <NavLink href='#features' label='Features' delay={0.1} />
-            <NavLink href='#how-it-works' label='How It Works' delay={0.2} />
-            <NavLink href='#testimonials' label='Testimonials' delay={0.3} />
-            <NavLink href='#pricing' label='Pricing' delay={0.4} />
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.href}
+                href={link.href}
+                label={link.label}
+                delay={link.delay}
+              />
+            ))}
+
+            {isAuthenticated && (
+              <>
+                {/* Points display */}
+                <motion.div
+                  className='flex items-center bg-indigo-50 px-3 py-1 rounded-full'
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <Medal className='w-4 h-4 text-indigo-600 mr-1' />
+                  <span className='text-indigo-700 font-medium'>
+                    {points} XP
+                  </span>
+                </motion.div>
+              </>
+            )}
 
             {isAuthenticated ? (
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className='bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium shadow-md hover:bg-indigo-700 transition-colors'
-                onClick={() => {
-                  logout({
-                    logoutParams: {
-                      returnTo: import.meta.env.VITE_REDIRECT_URL,
-                      clientId: import.meta.env.VITE_AUTH0_CLIENT_ID
-                    }
-                  })
-                }}
-              >
-                Logout
-              </motion.button>
+              <div className='flex items-center space-x-4'>
+                <div className='flex items-center space-x-2'>
+                  {/* Profile Icon */}
+                  <motion.div
+                    className='relative group'
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                  >
+                    <div className='rounded-full bg-indigo-700 h-10 w-10 flex items-center justify-center cursor-pointer'>
+                      <span className='text-white font-bold'>
+                        {user?.name?.slice(0, 1).toUpperCase() || 'U'}
+                      </span>
+                    </div>
+                  </motion.div>
+
+                  {/* Logout Button */}
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    className='bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium shadow-md hover:bg-indigo-700 transition-colors'
+                    onClick={() => {
+                      logout({
+                        logoutParams: {
+                          returnTo: import.meta.env.VITE_REDIRECT_URL,
+                          clientId: import.meta.env.VITE_AUTH0_CLIENT_ID
+                        }
+                      })
+                    }}
+                  >
+                    Logout
+                  </motion.button>
+                </div>
+              </div>
             ) : (
               <>
                 <motion.button
@@ -133,31 +198,71 @@ const Navbar = () => {
             className='md:hidden bg-white'
           >
             <div className='px-4 py-2 space-y-1'>
-              <MobileNavLink
-                href='#features'
-                label='Features'
-                onClick={() => setIsOpen(false)}
-              />
-              <MobileNavLink
-                href='#how-it-works'
-                label='How It Works'
-                onClick={() => setIsOpen(false)}
-              />
-              <MobileNavLink
-                href='#testimonials'
-                label='Testimonials'
-                onClick={() => setIsOpen(false)}
-              />
-              <MobileNavLink
-                href='#pricing'
-                label='Pricing'
-                onClick={() => setIsOpen(false)}
-              />
-              <div className='pt-2'>
-                <button className='w-full bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium shadow-md hover:bg-indigo-700 transition-colors'>
-                  Get Started
-                </button>
-              </div>
+              {navLinks.map((link) => (
+                <MobileNavLink
+                  key={link.href}
+                  href={link.href}
+                  label={link.label}
+                  onClick={() => setIsOpen(false)}
+                />
+              ))}
+
+              {isAuthenticated && (
+                <>
+                  <div className='flex items-center py-2'>
+                    <Medal className='w-4 h-4 text-indigo-600 mr-2' />
+                    <span className='text-indigo-700 font-medium'>
+                      {points} XP
+                    </span>
+                  </div>
+
+                  <div className='pt-2'>
+                    <button
+                      className='w-full bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium shadow-md hover:bg-indigo-700 transition-colors'
+                      onClick={() => {
+                        logout({
+                          logoutParams: {
+                            returnTo: import.meta.env.VITE_REDIRECT_URL,
+                            clientId: import.meta.env.VITE_AUTH0_CLIENT_ID
+                          }
+                        })
+                        setIsOpen(false)
+                      }}
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {!isAuthenticated && (
+                <>
+                  <div className='pt-2'>
+                    <button
+                      className='w-full bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium shadow-md hover:bg-indigo-700 transition-colors mb-2'
+                      onClick={() => {
+                        loginWithRedirect({
+                          appState: { returnTo: '/dashboard' }
+                        })
+                        setIsOpen(false)
+                      }}
+                    >
+                      SignIn
+                    </button>
+                    <button
+                      className='w-full bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium shadow-md hover:bg-indigo-700 transition-colors'
+                      onClick={() => {
+                        loginWithRedirect({
+                          appState: { returnTo: '/dashboard' }
+                        })
+                        setIsOpen(false)
+                      }}
+                    >
+                      Register
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </motion.div>
         )}

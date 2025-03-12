@@ -43,18 +43,22 @@ export const addUser = async (req, res) => {
 }
 
 export const getUser = async (req, res) => {
-  const { email } = req.params
-
+  console.log('req received')
+  const { email } = req.query
+  console.log(email, 'email')
   try {
     const user = await prisma.user.findUnique({
       where: { email: email }
     })
     if (user) {
+      console.log(user, 'user')
       res.status(200).json(user)
     } else {
       res.status(404).json({ error: 'User not found' })
     }
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to retrieve user' })
   }
 }
+// export const update
