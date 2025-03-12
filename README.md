@@ -4,7 +4,19 @@
 ![Project Stage](https://img.shields.io/badge/Stage-Development-orange)
 ![AI Powered](https://img.shields.io/badge/AI-GPT4/Claude/Llama3-blue)
 
-> **Transform learning into an adventure** with adaptive AI gamification and real-world career simulations
+💡 Rethinking Gamification for WsCube
+ <br>Instead of just leaderboards and points, we focused on high-impact, innovative features that provide real-world learning experiences.
+
+🎯 Introducing Two Marketplaces
+
+ 1️⃣ Freelancing Simulator 🏗️
+A marketplace like Upwork where students bid on dummy projects.
+Winners work with an AI avatar acting as their client to simulate real freelancing gigs.
+
+2️⃣ Job Simulation Hub 💼
+Students apply for dummy job postings with a resume.
+They go through AI-powered hiring rounds (GD, interviews, etc.).
+Once hired, they join a team and work on projects collaboratively.
 
 ## 📖 Table of Contents
 - [🚀 Problem Statement](#-problem-statement)
