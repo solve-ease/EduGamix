@@ -16,9 +16,11 @@ import JobDescription from './pages/jobDescriptionStatic'
 import AvatarModel from './components/AvatarModel'
 import DisplayModel from './pages/DisplayModel'
 import ProfilePage from './pages/ProfilePage'
-
+import LeaderboardPage from './pages/LeaderBoard'
 
 function App() {
+  const [userData, setUserData] = useState(null)
+  const [profileModalOpen, setProfileModalOpen] = useState(false)
   const {
     isAuthenticated,
     isLoading,
@@ -26,7 +28,14 @@ function App() {
     getAccessTokenSilently,
     user
   } = useAuth0()
-
+  useEffect(() => {
+    if (user) {
+      console.log('initializing user')
+      const email = user.email
+      console.log('user', user)
+      userInit(email)
+    }
+  }, [isAuthenticated, isLoading, user])
   useEffect(() => {
     const checkAuth = async () => {
       if (!isAuthenticated && !isLoading) {
@@ -44,17 +53,36 @@ function App() {
     checkAuth()
   }, [getAccessTokenSilently])
 
+  const userInit = async (email) => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/user/get-user?email=${email}`
+      )
+      if (response) {
+        const data = await response.json()
+        setUserData(data)
+        setProfileModalOpen(false)
+      } else {
+        setProfileModalOpen(true)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
-    <div className='min-h-screen'>
-      <main className='flex-grow'>
-        <Navbar />
+    <div className='min-h-screen flex flex-col items-center '>
+      <Navbar />
+      <main className='flex-grow pt-20'>
+        <ProfileCreationModal
+          isOpen={profileModalOpen}
+          setProfileModalOpen={setProfileModalOpen}
+        />
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route
             path='/dashboard'
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
-                <ProfileCreationModal isOpen={true} />
                 <div>Dashboard</div>
               </ProtectedRoute>
             }
@@ -64,9 +92,10 @@ function App() {
           <Route path='/job-listing' element={<JobListingPage />} />
           <Route path='/job-description' element={<JobDescription />} />
           <Route path='/course-1-interview' element={<CourseInterview />} />
-          <Route path='/avatar' element = {<DisplayModel />} />
-          <Route path='/profile' element = {<ProfilePage />} />
+          <Route path='/avatar' element={<DisplayModel />} />
+          <Route path='/profile' element={<ProfilePage />} />
 
+          <Route path='/leader' element={<LeaderboardPage />} />
         </Routes>
       </main>
     </div>
