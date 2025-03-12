@@ -61,3 +61,4 @@ export const getUser = async (req, res) => {
     res.status(500).json({ error: 'Failed to retrieve user' })
   }
 }
+// export const update

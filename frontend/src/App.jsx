@@ -16,7 +16,6 @@ import JobDescription from './pages/jobDescriptionStatic'
 import AvatarModel from './components/AvatarModel'
 import DisplayModel from './pages/DisplayModel'
 import ProfilePage from './pages/ProfilePage'
-
 import LeaderboardPage from './pages/LeaderBoard'
 
 function App() {
@@ -71,9 +70,9 @@ function App() {
     }
   }
   return (
-    <div className='min-h-screen'>
-      <main className='flex-grow flex flex-col items-center p-[2rem]'>
-        <Navbar />
+    <div className='min-h-screen flex flex-col items-center '>
+      <Navbar />
+      <main className='flex-grow pt-20'>
         <ProfileCreationModal
           isOpen={profileModalOpen}
           setProfileModalOpen={setProfileModalOpen}
