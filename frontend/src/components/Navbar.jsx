@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed z-50 transition-all duration-300 ${
+      className={`fixed w-[80vw] z-50 transition-all duration-300 ${
         scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
@@ -52,24 +52,31 @@ const Navbar = () => {
             <NavLink href='#pricing' label='Pricing' delay={0.4} />
 
             {isAuthenticated ? (
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className='bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium shadow-md hover:bg-indigo-700 transition-colors'
-                onClick={() => {
-                  logout({
-                    logoutParams: {
-                      returnTo: import.meta.env.VITE_REDIRECT_URL,
-                      clientId: import.meta.env.VITE_AUTH0_CLIENT_ID
-                    }
-                  })
-                }}
-              >
-                Logout
-              </motion.button>
+              <>
+                <div className='rounded-full bg-indigo-700 h-8 w-8 flex items-center justify-center'>
+                  <span className='text-white font-bold '>
+                    {user.name.slice(0, 1).toUpperCase()}
+                  </span>
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  className='bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium shadow-md hover:bg-indigo-700 transition-colors'
+                  onClick={() => {
+                    logout({
+                      logoutParams: {
+                        returnTo: import.meta.env.VITE_REDIRECT_URL,
+                        clientId: import.meta.env.VITE_AUTH0_CLIENT_ID
+                      }
+                    })
+                  }}
+                >
+                  Logout
+                </motion.button>
+              </>
             ) : (
               <>
                 <motion.button

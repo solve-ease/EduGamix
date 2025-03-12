@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { createUser } from '../api'
 import { useAuth0 } from '@auth0/auth0-react'
+import { s } from 'framer-motion/client'
 
-const ProfileCreationModal = ({ isOpen, onClose }) => {
+const ProfileCreationModal = ({ isOpen, onClose, setProfileModalOpen }) => {
   const { user } = useAuth0()
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
@@ -13,7 +14,7 @@ const ProfileCreationModal = ({ isOpen, onClose }) => {
     address: '',
     phoneNumber: '',
     userType: '',
-    email: user.email || ''
+    email: user ? user.email : ''
   })
   const [errors, setErrors] = useState({})
 
@@ -46,11 +47,14 @@ const ProfileCreationModal = ({ isOpen, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (validateForm()) {
-      const req = await createUser(formData)
-      console.log(req)
-      console.log('Form submitted:', formData)
-      // Submit data to backend here
-      onClose()
+      try {
+        const req = await createUser(formData)
+        console.log(req)
+        console.log('Form submitted:', formData)
+        setProfileModalOpen(false)
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
   const validateForm = () => {
@@ -76,7 +80,7 @@ const ProfileCreationModal = ({ isOpen, onClose }) => {
       <div className='bg-white rounded-xl shadow-lg w-full max-w-md relative'>
         {/* Close button */}
         <button
-          onClick={onClose}
+          onClick={() => setProfileModalOpen(false)}
           className='absolute top-4 right-4 text-gray-500 hover:text-gray-700'
         >
           <svg
