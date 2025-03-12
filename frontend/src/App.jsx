@@ -13,6 +13,10 @@ const { VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID, VITE_AUTH0_AUDIENCE } =
   import.meta.env
 import JobListingPage from './pages/JobListingPage'
 import JobDescription from './pages/jobDescriptionStatic'
+import AvatarModel from './components/AvatarModel'
+import DisplayModel from './pages/DisplayModel'
+import ProfilePage from './pages/ProfilePage'
+
 
 function App() {
   const {
@@ -60,6 +64,8 @@ function App() {
           <Route path='/job-listing' element={<JobListingPage />} />
           <Route path='/job-description' element={<JobDescription />} />
           <Route path='/course-1-interview' element={<CourseInterview />} />
+          <Route path='/avatar' element = {<DisplayModel />} />
+          <Route path='/profile' element = {<ProfilePage />} />
 
         </Routes>
       </main>
