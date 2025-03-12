@@ -4,17 +4,17 @@ from surprise.model_selection import train_test_split
 import pandas as pd
 import numpy as np
 
-# 🎯 Mastery Threshold
+# Mastery Threshold
 MASTERY_THRESHOLD = 0.9
 BKT_FILE = "bkt_mastery.json"  # File to store BKT mastery data
 
-# 🎯 Bayesian Knowledge Tracing (BKT) Parameters
+# Bayesian Knowledge Tracing (BKT) Parameters
 p_init = 0.3  # Initial probability of mastery
 p_learn = 0.1  # Probability of learning after each attempt
 p_guess = 0.2  # Probability of guessing correctly
 p_slip = 0.1   # Probability of slipping (incorrect answer despite mastery)
 
-# 🔹 Load or Initialize BKT Mastery Data
+# Load or Initialize BKT Mastery Data
 def load_bkt_mastery():
     try:
         with open(BKT_FILE, "r") as file:
@@ -24,12 +24,12 @@ def load_bkt_mastery():
 
 bkt_mastery_data = load_bkt_mastery()
 
-# 🔹 Save BKT Mastery Data
+# Save BKT Mastery Data
 def save_bkt_mastery():
     with open(BKT_FILE, "w") as file:
         json.dump(bkt_mastery_data, file, indent=4)
 
-# 🔹 Function to Update BKT Mastery
+# Function to Update BKT Mastery
 def update_bkt_mastery(student_id, skill, score):
     """Updates BKT mastery probability for a given student and skill."""
     student_key = str(student_id)
@@ -49,7 +49,7 @@ def update_bkt_mastery(student_id, skill, score):
     bkt_mastery_data[student_key][str(skill)] = p_mastery + (1 - p_mastery) * p_learn
     save_bkt_mastery()
 
-# 🎯 Sample Student-Quiz Data
+# Sample Student-Quiz Data
 quiz_data = [
     (1, 101, 0.4, 30), (1, 102, 0.6, 225), (1, 103, 0.8, 40), (1, 104, 0.50, 30),
     (1, 105, 0.5, 5), (1, 106, 0.2, 60), (1, 107, 0.9, 20), (1, 108, 0.85, 30),
@@ -99,12 +99,12 @@ def recommend_topics_for_next_quiz(student_id, skills, top_n=3):
     weak_skills = {skill: mastery for skill, mastery in predictions.items() if mastery < MASTERY_THRESHOLD}
     
     if not weak_skills:
-        print(f"✅ Student {student_id} has mastered all topics. No further recommendations.")
+        print(f"Student {student_id} has mastered all topics. No further recommendations.")
         return None
     
     # Recommend lowest mastery skills
     recommended_skills = sorted(weak_skills, key=weak_skills.get)[:top_n]
-    print(f"📌 Recommended Topics for Next Quiz (Student {student_id}): {recommended_skills}")
+    print(f"Recommended Topics for Next Quiz (Student {student_id}): {recommended_skills}")
     return recommended_skills
 
 # 🔹 Run Next Quiz Recommendation
