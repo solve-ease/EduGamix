@@ -18,6 +18,25 @@ Students apply for dummy job postings with a resume.
 They go through AI-powered hiring rounds (GD, interviews, etc.).
 Once hired, they join a team and work on projects collaboratively.
 
+
+## Machine Learning Model Description:
+<br>
+
+### **Script 1: Bid Ranking Prediction**
+Predicts freelancing bid ranks using a deep learning model for text clarity and a regression model for numerical features (experience, price, reputation). Combines both models to output a bid rank.
+
+---
+
+### **Script 2: Student Learning Style Clustering**
+Clusters students into learning styles (e.g., visual, fast, slow learners) based on behavior data (clicks, time spent, scores). Uses K-Means clustering, PCA for visualization, and provides personalized recommendations.
+
+---
+
+### **Script 3: Topic Recommendation with BKT and Collaborative Filtering**
+Recommends quiz topics by tracking skill mastery using Bayesian Knowledge Tracing (BKT) and collaborative filtering (SVD). Adjusts recommendations based on performance and time taken, focusing on weak areas.
+
+
+
 ## 📖 Table of Contents
 - [🚀 Problem Statement](#-problem-statement)
 - [💡 Our Solution](#-our-solution)
