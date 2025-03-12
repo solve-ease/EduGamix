@@ -17,6 +17,8 @@ import AvatarModel from './components/AvatarModel'
 import DisplayModel from './pages/DisplayModel'
 import ProfilePage from './pages/ProfilePage'
 
+import InterviewSimulation from './pages/InterviewSimulation'
+
 
 function App() {
   const {
@@ -66,6 +68,7 @@ function App() {
           <Route path='/course-1-interview' element={<CourseInterview />} />
           <Route path='/avatar' element = {<DisplayModel />} />
           <Route path='/profile' element = {<ProfilePage />} />
+          <Route path='/interview-simulation' element = {<InterviewSimulation />} />
 
         </Routes>
       </main>
