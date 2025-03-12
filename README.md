@@ -74,13 +74,11 @@ Recommends quiz topics by tracking skill mastery using Bayesian Knowledge Tracin
 
 | Category       | Technologies  |
 |---------------|--------------|
-| **AI/ML Core** | Python • TensorFlow • PyTorch • RLlib • Hugging Face Transformers |
+| **AI/ML Core** | Python • TensorFlow • PyTorch • RLlib • Hugging Face Transformers • SKLearn • Surprise • BKT |
 | **Generative AI** | GPT-4 • Claude 3 • Llama 3 • LangChain • Pinecone (Vector DB) |
 | **Backend** | Node.js • FastAPI • GraphQL • WebSocket |
 | **Database** | PostgreSQL • MongoDB • Redis • Elasticsearch |
-| **Frontend** | React • Three.js • Unity • WebGL |
-| **DevOps** | AWS • Docker • Kubernetes • GitHub Actions |
-| **Analytics** | Mixpanel • MLflow • Power BI |
+| **Frontend** | React • Three.js • WebGL |
 
 ---
 
