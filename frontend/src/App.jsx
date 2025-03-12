@@ -16,6 +16,9 @@ import JobDescription from './pages/jobDescriptionStatic'
 import AvatarModel from './components/AvatarModel'
 import DisplayModel from './pages/DisplayModel'
 import ProfilePage from './pages/ProfilePage'
+
+import InterviewSimulation from './pages/InterviewSimulation'
+
 import LeaderboardPage from './pages/LeaderBoard'
 
 function App() {
@@ -92,8 +95,9 @@ function App() {
           <Route path='/job-listing' element={<JobListingPage />} />
           <Route path='/job-description' element={<JobDescription />} />
           <Route path='/course-1-interview' element={<CourseInterview />} />
-          <Route path='/avatar' element={<DisplayModel />} />
-          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/avatar' element = {<DisplayModel />} />
+          <Route path='/profile' element = {<ProfilePage />} />
+          <Route path='/interview-simulation' element = {<InterviewSimulation />} />
 
           <Route path='/leader' element={<LeaderboardPage />} />
         </Routes>
