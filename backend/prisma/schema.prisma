@@ -18,4 +18,5 @@ model User {
   type             String
   highestEducation String
   phone            Int
+  points           Int     @default(0)
 }
