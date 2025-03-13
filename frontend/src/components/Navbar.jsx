@@ -37,8 +37,8 @@ const Navbar = ({ points = 2450 }) => {
   ]
 
   const authenticatedNavLinks = [
-    { href: '/profile', label: 'Dashboard', delay: 0.1 },
-    { href: '/courses', label: 'My Courses', delay: 0.2 },
+    { href: '/courses', label: 'My Courses', delay: 0.1 },
+    { href: '/profile', label: 'Dashboard', delay: 0.2 },
     { href: '/leader', label: 'Leaderboard', delay: 0.3 },
     { href: '/challenges', label: 'Challenges', delay: 0.4 }
   ]
